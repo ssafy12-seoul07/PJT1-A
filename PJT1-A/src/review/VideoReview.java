@@ -1,6 +1,11 @@
 package review;
 
 public class VideoReview {
+
+	// Review Class
+	// member field
+
+
 	private int videoNo;
 	private int reviewNo;
 	private String nickName;
@@ -15,8 +20,6 @@ public class VideoReview {
 	public void setNickName(String nickName) {this.nickName = nickName;}
 	public String getContent() {return content;}
 	public void setContent(String content) {this.content = content;}
-	
-	
 	
 	
 }
