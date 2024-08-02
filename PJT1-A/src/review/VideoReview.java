@@ -1,8 +1,11 @@
 package review;
 
 public class VideoReview {
+
 	// Review Class
 	// member field
+
+
 	private int videoNo;
 	private int reviewNo;
 	private String nickName;
