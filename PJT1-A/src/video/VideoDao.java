@@ -16,7 +16,7 @@ public class VideoDao implements VideoDaoInterface {
 	
 	private VideoDao() {
 		gson = new Gson();
-		try (FileReader reader = new FileReader("videos.json")) {
+		try (FileReader reader = new FileReader("video.json")) {
             Type listType = new TypeToken<List<Video>>() {}.getType();
             videoList = gson.fromJson(reader, listType);
             size = videoList.size();
