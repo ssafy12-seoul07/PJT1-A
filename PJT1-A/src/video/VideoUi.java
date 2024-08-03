@@ -77,7 +77,6 @@ public class VideoUi {
         int videoNo = Util.inputInt("영상 번호를 입력하세요: ");
         Video video = videoDao.selectVideoByNo(videoNo);
         VideoReviewUi reviewUi = VideoReviewUi.getInstance(videoNo);
-        reviewUi.service();
        
         
 
@@ -88,9 +87,13 @@ public class VideoUi {
             System.out.println("운동: " + video.getPart());
             System.out.println("영상 URL: " + video.getUrl());
             Util.printLine();
+            reviewUi.listReview();
+            reviewUi.service();
+            
             
         } else {
             System.out.println("해당 번호의 비디오를 찾을 수 없습니다.");
+            
         }
     }
 	
