@@ -87,7 +87,6 @@ public class VideoUi {
             System.out.println("운동: " + video.getPart());
             System.out.println("영상 URL: " + video.getUrl());
             Util.printLine();
-            reviewUi.listReview();
             reviewUi.service();
             
             
