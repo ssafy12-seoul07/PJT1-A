@@ -36,6 +36,7 @@ public class VideoReviewDao implements VideoReviewDaoInterface {
 		reviewNo++; // 리뷰 쓰면 번호 1씩 증가
 		videoReviewList.add(videoReview); // 리뷰 리스트에 등록
 		videoReviewDb.put(reviewNo, videoReviewList); // 리뷰 db에 등록
+		videoReview.setReviewNo(reviewNo); // 리뷰 번호 등록
 		return reviewNo; // 리뷰 번호 반환 (쓴 걸 바로 띄우기 위해서)
 	}
 	
