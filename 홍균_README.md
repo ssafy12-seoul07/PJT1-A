@@ -8,7 +8,7 @@
 
 
 
-## 수정된 클래스 다이어그램
+## GPT로 수정된 클래스 다이어그램
 
 ```plaintext
 [UI]
@@ -122,3 +122,59 @@ VideoReviewDao implements VideoReviewDaoInterface
 +getInstance(): VideoReviewDao
 +selectReview(videoNo: int): List<VideoReview>
 ```
+
+
+
+
+
+## GPT에게서 받은 클래스 다이어그램을 수정
+### 
+[Review]
+### VideoReview 클래스
+속성:
+-videoNo: int
+-reviewNo: int
+-nickName: String
+-content: String
+
+메서드: 
++VideoReview() // 기본 생성자
++VideoReview(videoNo: int, nickName: String, reviewNo: int, content: String) // 매개변수 받는 생성자
++getVideoNo(): int
++setVideoNo(videoNo: int): void
++getNickName(): String
++setNickName(nickName: String): void
++getReviewNo(): int
++setReviewNo(reviewNo: int): void
++getContent(): String
++setContent(content: String): void 
+
+### VideoReviewDao
+메서드:
++insertReview(videoReview: VideoReview): int
++selectReview(videoNo: int): List<VideoReview>
+
+### VideoReviewDaoImpl implements VideoReviewDaoInterface
+속성:
+-reviewNo: int
+-videoReviewList: List<VideoReview>
+-videoReviewDb: Map<Integer, List<VideoReview>>
+-instance: VideoReviewDaoImpl
+
+메서드:
+- VideoReviewDaoImpl() // 기본 생성자
++getInstance(): VideoReviewDaoImpl
++selectReview(videoNo: int): List<VideoReview>
++insertReview(videoReview: VideoReview): int
+
+### VideoReviewUi 클래스
+속성
+-videoReviewDao: VideoReviewDaoInterface
+-instance: VideoReviewUi
+-videoNo: int
+
+메서드
++getInstance(videoNo: int): VideoReviewUi
++service(): void
+-listReview(): void
+-registReview(): void
