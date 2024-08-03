@@ -53,6 +53,14 @@ public class VideoReviewUi {
 	private void listReview() {
 		List<VideoReview> videoReviewList = videoReviewDao.selectReview(videoNo);
 		
+		// 리뷰 없을 시 예외 처리
+		if(videoReviewList == null) {
+			Util.printLine();
+			System.out.println("영상리뷰 : " + 0 + "개");
+			Util.printLine();
+			return;
+		}
+		
 		// 영상 리뷰 개수 출력
 		Util.printLine();
 		System.out.println("영상리뷰 : " + videoReviewList.size() + "개");
