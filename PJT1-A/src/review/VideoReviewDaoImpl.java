@@ -16,7 +16,7 @@ public class VideoReviewDaoImpl implements VideoReviewDao {
 	// 기본 생성자
 	private VideoReviewDaoImpl() {}
 	
-	// 생성자 singleton을 위해 인스턴스 생성
+	// singleton을 위해 인스턴스 생성
 	private static VideoReviewDaoImpl instance = new VideoReviewDaoImpl();
 	
 	// instance 접근
