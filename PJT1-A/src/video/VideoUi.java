@@ -8,7 +8,6 @@ import util.Util;
 public class VideoUi {
 	private VideoDaoInterface videoDao;
 	private static VideoUi instance;
-	private MainUi mainUi;
 	private VideoUi() {
 		videoDao = VideoDao.getInstance();
 	}
@@ -33,7 +32,7 @@ public class VideoUi {
             }
             
             else if (menu==0) {
-            	MainUi.service();
+            	return;
             }
             
             else {
