@@ -10,7 +10,7 @@
     - 인애: MainUi와 SsafitProject(test)
 
     - 홍균: videoReview    
-    
+
     - 혜원: video
 
     처음에는 인애님이 Ui를 전담하기로 했으나, 곰곰이 클래스 다이어그램을 검토한 결과, 대부분의 기능이 Ui에 몰려있다는 사실을 깨달아서 그 중에서 MainUi만 맡기로 역할 재분배를 했다.
@@ -36,10 +36,27 @@
 
 - 그리고 명세서를 바탕으로 만든 클래스 다이어그램을 실제로 구현하는 데 있어서, 표기된 매개변수와 메소드가 존재하는 이유에 대해 깊이 고민하고 그 의도를 파악해야 한다는 점도 배웠다.
     - 예를 들어, `service()`가 어떤 부분을 나타내는 메소드인지, singleton pattern으로 작성된 클래스 객체에 어떻게 매개변수를 넣어줄 것인지에 대한 고민이 굉장히 많았다.
+``` java
+	// 기본 생성자
+	private VideoReviewUi() {}
+	// 변수 받는 생성자
+	private VideoReviewUi(int videoNo) {
+		this.videoNo = videoNo;
+		this.videoReviewDao = VideoReviewDao.getInstance();
+	}
+		
+	// singleton을 위한 instance 생성
+	private static VideoReviewUi instance;
+	// instance 접근
+	public static VideoReviewUi getInstance(int videoNo) {		
+		instance = new VideoReviewUi(videoNo);
+		return instance;
+	}
+```
 
+- 또, 어떻게 지정된 자료구조에 값을 넣고 조회하고 사용할 지 고민하면서 많이 친숙해진 것 같다.
 
-
-
+- 그리고 마지막에 마지막까지 디버깅은 필수! 다 됐다고 생각했는데 `detailVideo()`에서 
 
 ## Personal
 
@@ -47,94 +64,15 @@
 
 ## GPT로 수정된 클래스 다이어그램
 
-```plaintext
-[UI]
-SsafitProject 클래스
-메서드:
-+main(args[]: String): void
-
-MainUi 클래스
-메서드
-+service(): void
--exit(): void
-
-VideoUi 클래스
-속성
--videoDao: VideoDaoInterface
--instance: VideoUi 
-
-메서드
-+getInstance(): VideoUi 
-+service(): void
--listVideo(): void
--detailVideo(): void
-
-VideoReviewUi 클래스
-속성
--videoReviewDao: VideoReviewDaoInterface
--instance: VideoReviewUi
--videoNo: int
-메서드
-+getInstance(videoNo: int): VideoReviewUi
-+service(): void
--listReview(): void
--registReview(): void
-
-[Util]
-Util 클래스
-속성:
-sc: Scanner
-메서드:
-+inputString(msg: String): String // String을 입력받기
-+inputInt(msg: String): int // Int를 입력받기
-+printLine(): void // 디폴트 가로줄 출력
-+printLine(ch: char): void // char을 출력
-+printLine(ch: char, len: int): void // char을 len개수만큼 출력
-+screenClear(): void // 터미널을 깨끗하게 만들기
-
-[Video]
-Video
-속성:
--no: int
--title: String
--part: String
--url: String
-메서드:
-Video()
-+getNo(): int
-+setNo(no: int):void
-+getTitle():String
-+setTitle(title: String):void
-+getPart():String
-+setPart(part: String): void
-+getUrl(): String
-+setUrl(url: String): void
-+toString(): String
-
-VideoDaoInterface
-메서드:
-+selectVideo(): List<Video>
-+selectVideoByNo(no: int): Video
-
-VideoDao implements VideoDaoInterface
-속성:
--list: List<Video>
--instance : VideoDao
--MAX_SIZE:int{readonly}
-- size: int
-메서드:
-- VideoDao()
-+getInstance(): VideoDao
-+selectVideo(): List<Video> //전체 비디오 반환.
-+selectVideoByNo(no: int) : Video
 
 [Review]
-VideoReview 클래스
+### VideoReview 클래스
 속성:
 -videoNo: int
 -reviewNo: int
 -nickName: String
 -content: String
+
 메서드: 
 +getVideoNo(): int
 +setVideoNo(videoNo: int): void
@@ -145,27 +83,23 @@ VideoReview 클래스
 +getContent(): String
 +setContent(content: String): void 
 
-VideoReviewDaoInterface
+### VideoReviewDaoInterface
 메서드:
 +selectReview(videoNo: int): List<VideoReview>
 
-VideoReviewDao implements VideoReviewDaoInterface
+### VideoReviewDao implements VideoReviewDaoInterface
 속성:
 -reviewNo: int
 -videoReviewDb: Map<Integer, List<VideoReview>>
 -instance: VideoReviewDao
+
 메서드:
 - VideoReviewDao()
 +getInstance(): VideoReviewDao
 +selectReview(videoNo: int): List<VideoReview>
-```
-
-
-
-
 
 ## GPT에게서 받은 클래스 다이어그램을 수정
-### 
+
 [Review]
 ### VideoReview 클래스
 속성:
@@ -186,12 +120,12 @@ VideoReviewDao implements VideoReviewDaoInterface
 +getContent(): String
 +setContent(content: String): void 
 
-### VideoReviewDao
+### VideoReviewDaoInterface
 메서드:
 +insertReview(videoReview: VideoReview): int
 +selectReview(videoNo: int): List<VideoReview>
 
-### VideoReviewDaoImpl implements VideoReviewDaoInterface
+### VideoReviewDao implements VideoReviewDaoInterface
 속성:
 -reviewNo: int
 -videoReviewList: List<VideoReview>
