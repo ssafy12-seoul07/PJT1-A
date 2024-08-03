@@ -3,6 +3,7 @@ package review;
 import java.util.List;
 import java.util.Map;
 
+// Like VideoReviewManager
 public class VideoReviewDao {
 	// video review data access object
 	// member field
