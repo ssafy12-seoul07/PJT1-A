@@ -3,13 +3,14 @@ package review;
 public class VideoReviewUi {
 	// member field
 	private int videoNo;
-	private VideoReviewDao videoReviewDao;
+	private VideoReviewDaoInterface videoReviewDao;
 	
 	// 기본 생성자
 	private VideoReviewUi() {}
 	// 변수 받는 생성자
 	private VideoReviewUi(int videoNo) {
 		this.videoNo = videoNo;
+		this.videoReviewDao = VideoReviewDao.getInstance();
 	}
 	
 	// singleton을 위한 instance 생성
@@ -19,7 +20,7 @@ public class VideoReviewUi {
 	
 	
 	// methods
-	// 서비스
+	// 
 	public void service() {
 		
 	}
