@@ -1,4 +1,5 @@
 import util.Util;
+import video.VideoUi;
 
 public class MainUi {
     public void service() {
@@ -14,8 +15,7 @@ public class MainUi {
             
             switch (menu) {
                 case 1:
-                    // TODO: 영상 정보 기능 구현
-                    System.out.println("영상 정보 기능은 아직 구현되지 않았습니다.");
+                	VideoUi.getInstance().service();
                     break;
                 case 0:
                     exit();
