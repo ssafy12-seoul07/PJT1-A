@@ -11,9 +11,8 @@ public class VideoReview {
 	
 	// 생성자
 	public VideoReview(){}
-	public VideoReview(int videoNo, int reviewNo, String nickName, String content) {
+	public VideoReview(int videoNo, String nickName, String content) {
 		this.videoNo = videoNo;
-		this.reviewNo = reviewNo;
 		this.nickName = nickName;
 		this.content = content;	
 		

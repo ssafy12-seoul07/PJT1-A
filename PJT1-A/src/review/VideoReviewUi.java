@@ -76,8 +76,12 @@ public class VideoReviewUi {
 	
 	// review 작성화면 보여주기
 	private void registerReview() {
-		Util.inputString("닉네임을 입력하세요 : ");
-		Util.inputString("내용을 입력하세요 : ");
+		String nickName = Util.inputString("닉네임을 입력하세요 : ");
+		String content = Util.inputString("내용을 입력하세요 : ");
+		VideoReview review = new VideoReview(videoNo, nickName, content);
+		VideoReviewDao.getInstance().insertReview(review);
+		System.out.println("리뷰가 등록되었습니다.");
+		return;
 	}
 	
 }
