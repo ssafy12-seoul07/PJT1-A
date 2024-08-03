@@ -68,3 +68,20 @@
             ```
             
             이 방식으로 수정했습니다. reviewUi 클래스 내의 메서드에 직접 파라미터를 주입하지 않고, 인스턴스 객체를 호출해 와서 활용하는 방식을 선택하여 클래스 간 결합도를 낮출 수 있었습니다.
+            
+        - Gson을 활용하여 수동으로 Json을 배열로 사용하는 방식을 배웠습니다. Gson.jar를 저장하고, 이를 class path로 등록한 뒤 Gson 객체를 사용하여 json 파일을 파싱할 수 있었습니다. 처음에는 수동으로 설정하는 과정이 낯설고 무언가 잘못 설정하게 될까봐 걱정되었지만 실습 시간에 한 번, 프로젝트를 진행하며 다시 설정해 보면서 두려움을 덜게 되었습니다.
+            
+            ```java
+            private static Gson gson;
+            	
+            	private VideoDao() {
+            		gson = new Gson();
+            		try (FileReader reader = new FileReader("video.json")) {
+                        Type listType = new TypeToken<List<Video>>() {}.getType();
+                        videoList = gson.fromJson(reader, listType);
+                        size = videoList.size();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+            	}
+            ```
